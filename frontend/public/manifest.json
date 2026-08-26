@@ -1,0 +1,10 @@
+{
+  "name": "anykit",
+  "short_name": "AnyKit",
+  "description": "浏览器里的格式工厂",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f0",
+  "theme_color": "#17252a",
+  "lang": "zh-CN"
+}

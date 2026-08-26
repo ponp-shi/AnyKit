@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: anykit
+      POSTGRES_PASSWORD: anykit
+      POSTGRES_DB: anykit
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - ../backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+  worker:
+    build:
+      context: ..
+      dockerfile: worker/Dockerfile
+    command: celery -A worker.celery_app worker --loglevel=INFO
+    volumes:
+      - ..:/workspace
+    depends_on:
+      - redis
+volumes:
+  postgres_data:

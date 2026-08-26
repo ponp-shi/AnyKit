@@ -1,0 +1,27 @@
+# 忽略 Python 缓存
+__pycache__/
+*.py[cod]
+.Python
+*.egg-info/
+.venv/
+venv/
+
+# 前端
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+
+# 系统与 IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+.vercel

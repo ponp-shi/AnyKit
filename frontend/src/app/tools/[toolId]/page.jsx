@@ -4,6 +4,8 @@ import SiteNav from "@/components/SiteNav";
 import ToolPageBody from "@/components/ToolPageBody";
 import ToolSidebar from "@/components/ToolSidebar";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ toolId: tool.id }));
 }

@@ -14,18 +14,22 @@
 ```bash
 cd frontend
 npm install
-npm run dev
-```
-
-浏览器打开 `http://localhost:3000`。
-
-生产构建：
-
-```bash
-cd frontend
 npm run build
-npm start
+npm run start
 ```
+
+浏览器打开 `http://localhost:3000`。开发时用 `npm run dev`。
+
+## 开关公网页
+
+双击 `scripts/start-web.bat` 开启本机站点和外网隧道；双击 `scripts/stop-web.bat` 关闭。也可以在项目根目录执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/start-web.ps1
+powershell -ExecutionPolicy Bypass -File scripts/stop-web.ps1
+```
+
+开起来后本机是 `http://localhost:3000`，公网地址出现在 cloudflared 窗口里。关掉脚本或关机后，外网地址会失效。
 
 ## 产品说明
 

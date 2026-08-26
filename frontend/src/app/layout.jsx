@@ -5,6 +5,7 @@ export const metadata = {
   description: "视频转 GIF、抽帧、压缩、图片处理、PDF 合并拆分、JSON / 二维码等常用工具。文件只在本地处理。",
   applicationName: "AnyKit",
   manifest: "/manifest.json",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }) {

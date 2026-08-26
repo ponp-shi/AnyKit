@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { categories, tools } from "@/config/tools";
 import SiteNav from "@/components/SiteNav";
+import { CategoryArt, HeroVisual, HowArt } from "@/components/Visuals";
 import { useAppStore } from "@/store";
 
 const icons = {
@@ -57,7 +58,7 @@ function ToolCard({ tool }) {
     <Link href={`/tools/${tool.id}`} onClick={() => remember(tool.id)}>
       <article className={`tool-card ${tool.accent === "orange" ? "warm" : ""}`}>
         <div>
-          <div className={`tool-icon ${tool.accent}`}>{<Icon size={18} strokeWidth={1.8} />}</div>
+          <div className={`tool-icon ${tool.accent}`}>{<Icon size={22} strokeWidth={2.1} />}</div>
           <h3>{tool.title}</h3>
           <p>{tool.description}</p>
         </div>
@@ -97,11 +98,9 @@ export default function Home() {
               <Search size={16} />
               <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索工具，例如 GIF、压缩、JSON…" />
             </label>
+            <p className="hero-privacy">没有账号墙。视频和图片只在这台设备处理，不会上传。</p>
           </div>
-          <div className="hero-note">
-            <strong>为什么本地处理</strong>
-            没有账号墙，也不用把视频传到别人的服务器。适合办公、出差和临时用一下别人的电脑。
-          </div>
+          <HeroVisual />
         </section>
 
         <section className="tools-section" id="tools">
@@ -126,7 +125,10 @@ export default function Home() {
             if (!group.length) return null;
             return (
               <div key={item.id}>
-                <div className="category-label">{item.label}</div>
+                <div className="category-label">
+                  <CategoryArt id={item.id} />
+                  {item.label}
+                </div>
                 <div className="tool-grid">{group.map((tool) => <ToolCard key={tool.id} tool={tool} />)}</div>
               </div>
             );
@@ -139,9 +141,9 @@ export default function Home() {
             <h2 className="section-title">三步做完</h2>
           </div>
           <div className="how-grid">
-            <article><span>01</span><h3>选工具</h3><p>按视频、图片、文档、开发者分类，或直接搜索。</p></article>
-            <article><span>02</span><h3>丢文件</h3><p>拖放或批量选择。参数在右侧，和格式工厂一样先设再转。</p></article>
-            <article><span>03</span><h3>下载结果</h3><p>处理在浏览器里完成。关掉标签页后，文件不会留在任何服务器上。</p></article>
+            <article><HowArt step={0} /><span>01</span><h3>选工具</h3><p>按视频、图片、文档、开发者分类，或直接搜索。</p></article>
+            <article><HowArt step={1} /><span>02</span><h3>丢文件</h3><p>拖放或批量选择。参数在右侧，和格式工厂一样先设再转。</p></article>
+            <article><HowArt step={2} /><span>03</span><h3>下载结果</h3><p>处理在浏览器里完成。关掉标签页后，文件不会留在任何服务器上。</p></article>
           </div>
           <div className="privacy-banner">
             <ShieldCheck size={18} />
